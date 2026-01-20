@@ -31,6 +31,8 @@ grafana:
 
 # Deshabilitar webhooks si el cluster no los necesita
 prometheusOperator:
+  tls:
+    enabled: false
   admissionWebhooks:
     enabled: false
 
