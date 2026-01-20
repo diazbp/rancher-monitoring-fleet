@@ -1,0 +1,4 @@
+helm:
+  chart: rancher-monitoring-crd
+  repo: https://charts.rancher.io
+  version: 107.2.2+up69.8.2-rancher.26
