@@ -2,25 +2,26 @@
 
 global:
   cattle:
-    clusterName: landesamt-ds  # IMPORTANTE: nombre del cluster en Rancher
+    clusterName: landesamt-ds  # ¡Muy importante! Esto debe coincidir con el nombre del cluster en Rancher
 
 prometheus:
   prometheusSpec:
+    retention: 1d
+    replicas: 1
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: ""  # No usar PVC
+          storageClassName: null
           accessModes: []
           resources: {}
-    retention: 1d  # Reduce retención ya que se pierde al reiniciar
-    replicas: 1
 
 alertmanager:
   alertmanagerSpec:
+    replicas: 1
     storage:
       volumeClaimTemplate:
         spec:
-          storageClassName: ""
+          storageClassName: null
           accessModes: []
           resources: {}
 
@@ -28,12 +29,13 @@ grafana:
   persistence:
     enabled: false
 
-# Deshabilitar componentes opcionales si no se necesitan
+# Deshabilitar webhooks si el cluster no los necesita
 prometheusOperator:
   admissionWebhooks:
     enabled: false
 
-# Evita errores en clusters sin nodos tolerantes a control-plane
-nodeExporter:
-  tolerations: []
+# Node Exporter (puedes dejarlo activado si quieres métricas de nodos)
+# Si el cluster es muy pequeño, puedes desactivarlo:
+# nodeExporter:
+#   enabled: false
 
