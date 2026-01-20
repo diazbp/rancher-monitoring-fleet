@@ -1,0 +1,8 @@
+# clusters/landesamt-ds/rancher-monitoring/fleet.yaml
+
+helm:
+  chart: rancher-monitoring
+  repo: https://charts.rancher.io
+  version: 102.0.0+up40.1.2  # Verifica la versión en tu catálogo Rancher
+  valuesFiles:
+    - values.yaml

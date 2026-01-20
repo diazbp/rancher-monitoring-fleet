@@ -1,0 +1,39 @@
+# clusters/landesamt-ds/rancher-monitoring/values.yaml
+
+global:
+  cattle:
+    clusterName: landesamt-ds  # IMPORTANTE: nombre del cluster en Rancher
+
+prometheus:
+  prometheusSpec:
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: ""  # No usar PVC
+          accessModes: []
+          resources: {}
+    retention: 1d  # Reduce retención ya que se pierde al reiniciar
+    replicas: 1
+
+alertmanager:
+  alertmanagerSpec:
+    storage:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: ""
+          accessModes: []
+          resources: {}
+
+grafana:
+  persistence:
+    enabled: false
+
+# Deshabilitar componentes opcionales si no se necesitan
+prometheusOperator:
+  admissionWebhooks:
+    enabled: false
+
+# Evita errores en clusters sin nodos tolerantes a control-plane
+nodeExporter:
+  tolerations: []
+
