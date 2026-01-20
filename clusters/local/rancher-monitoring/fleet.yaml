@@ -1,5 +1,0 @@
-# fleet.yaml
-helm:
-  repo: https://charts.rancher.io
-  chart: rancher-monitoring
-  version: 102.0.0+up40.1.2
