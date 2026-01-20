@@ -3,6 +3,6 @@
 helm:
   chart: rancher-monitoring
   repo: https://charts.rancher.io
-  version: 102.0.0+up40.1.2  # Verifica la versión en tu catálogo Rancher
+  version: 107.2.2+up69.8.2-rancher.26 # Verifica la versión en tu catálogo Rancher
   valuesFiles:
     - values.yaml
